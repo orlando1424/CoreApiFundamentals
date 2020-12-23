@@ -22,7 +22,7 @@ namespace CoreCodeCamp.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        public async Task<IActionResult> GetCamps()
+        public async Task<ActionResult<CampModel[]>> GetCamps()
         {
             
 
@@ -30,8 +30,8 @@ namespace CoreCodeCamp.Controllers
             {
                 var results = await _repository.GetAllCampsAsync();
 
-                CampModel[] models = _mapper.Map < CampModel[]>(results);
-                return Ok(models);
+
+                return _mapper.Map<CampModel[]>(results);
             }
             catch (Exception)
             {
