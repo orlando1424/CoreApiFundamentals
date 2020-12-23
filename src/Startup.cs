@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using AutoMapper;
 using CoreCodeCamp.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -22,6 +24,8 @@ namespace CoreCodeCamp
       services.AddScoped<ICampRepository, CampRepository>();
 
       services.AddControllers();
+
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

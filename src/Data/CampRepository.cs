@@ -33,7 +33,7 @@ namespace CoreCodeCamp.Data
 
     public async Task<bool> SaveChangesAsync()
     {
-      _logger.LogInformation($"Attempitng to save the changes in the context");
+      _logger.LogInformation($"Attempting to save the changes in the context");
 
       // Only return success if at least one row was changed
       return (await _context.SaveChangesAsync()) > 0;
