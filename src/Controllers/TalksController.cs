@@ -31,7 +31,7 @@ namespace CoreCodeCamp.Controllers
         {
             try
             {
-                var talks = await _repository.GetTalksByMonikerAsync(moniker);
+                var talks = await _repository.GetTalksByMonikerAsync(moniker, true);
                 return _mapper.Map<TalkModel[]>(talks);
             }
             catch (Exception)
@@ -46,7 +46,7 @@ namespace CoreCodeCamp.Controllers
         {
             try
             {
-                var talk = await _repository.GetTalkByMonikerAsync(moniker,id);
+                var talk = await _repository.GetTalkByMonikerAsync(moniker,id, true);
                 return _mapper.Map<TalkModel>(talk);
             }
             catch (Exception)
@@ -70,6 +70,8 @@ namespace CoreCodeCamp.Controllers
                 if (model.Speaker == null) return BadRequest("Speaker ID is required");
                 var speaker = await _repository.GetSpeakerAsync(model.Speaker.SpeakerId);
                 if (speaker == null) return BadRequest("Speaker could not be found");
+                talk.Speaker = speaker;
+
 
                 _repository.Add(talk);
 
