@@ -115,6 +115,10 @@ namespace CoreCodeCamp.Controllers
                 {
                     return _mapper.Map<TalkModel>(talk);
                 }
+                else
+                {
+                    return BadRequest("Failed to update database");
+                }
 
 
             }
