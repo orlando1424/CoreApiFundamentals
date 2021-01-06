@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 namespace CoreCodeCamp.Controllers
 {
     [Route("api/[controller]")]
+    
     [ApiController]
 
     public class OperationsController : ControllerBase
